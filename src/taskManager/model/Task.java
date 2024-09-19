@@ -1,6 +1,5 @@
 package taskManager.model;
 
-import taskManager.sevice.StatusOfTask;
 import taskManager.sevice.TaskManager;
 
 import java.util.Objects;
@@ -16,10 +15,10 @@ public class Task extends TaskManager {
         return id;
     }
 
-    public Task(String title, String description) {
+    public Task(String title, String description, StatusOfTask status) {
         this.title = title;
         this.description = description;
-        this.status = StatusOfTask.NEW;
+        this.status = status;
 
     }
 
@@ -39,19 +38,19 @@ public class Task extends TaskManager {
     @Override
     public String toString() {
         return
-                "{title='" + title + " '" +", description='" + description +
-                " '" +", status=" + status +", id=" + id + '}';
+                " Название: " + title +" Описание: " + description +
+                 " Статус: " + status +"  id= " + id + '\n';
     }
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Task that = (Task) object;
-        return id == that.id && Objects.equals(listTask, that.listTask) ;
+        return id == that.id && Objects.equals(getListTask(), that.getListTask()) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listTask,id);
+        return Objects.hash(getListTask(),id);
     }
 }

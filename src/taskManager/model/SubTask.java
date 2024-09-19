@@ -1,9 +1,10 @@
 package taskManager.model;
 
 public class SubTask extends Epic {
-    public int epicId;
-    public SubTask(String title, String description) {
-        super(title, description);
+    private int epicId;
+    public SubTask(String title, String description, StatusOfTask status) {
+
+        super(title, description,status);
     }
 
     public int getId() {
@@ -11,5 +12,13 @@ public class SubTask extends Epic {
     }
     public void setEpicId(Epic epic){
         epicId=epic.id;
+    }
+
+    public int getEpicId() {
+        return epicId;
+    }
+
+    public void setEpicId(int epicId) {
+        this.epicId = epicId;
     }
 }

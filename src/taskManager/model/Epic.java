@@ -1,38 +1,50 @@
 package taskManager.model;
 
-import taskManager.sevice.StatusOfTask;
-
 import java.util.ArrayList;
 
 public class Epic extends Task {
 
-    public ArrayList<SubTask> epicSubTask; //создаем список подзадач в эпике
-    public Epic(String title, String description) {
-        super(title, description);
-        epicSubTask = new ArrayList<>();
-        this.status = StatusOfTask.NEW;
+    private ArrayList<Integer> epicSubTaskList; //создаем список подзадач в эпике
+    public Epic(String title, String description, StatusOfTask status ) {
+        super(title, description,status);
+        epicSubTaskList = new ArrayList<>();
+        this.status = status;
     }
 
     public int getId() {
+
         return super.id;
     }
 
     public void addSubTaskToEpic(SubTask subTask, Epic epic) {
-        epicSubTask.add(subTask);
-        calculateEpicStatus(epic);
+        int id = subTask.getId();
+        epicSubTaskList.add(id);
+
     }
 
-    public ArrayList<SubTask> getSubTaskInEpic() {
-        return epicSubTask;
+    public ArrayList<Integer> getSubTaskInEpic() {
+
+        return epicSubTaskList;
     }
 
     public void clearSubTaskInEpic() {
-        epicSubTask.clear();
+
+        epicSubTaskList.clear();
     }
 
     public void removeSubTaskById(SubTask subTask) {
-        epicSubTask.remove(subTask.getId());
+
+        epicSubTaskList.remove(subTask.getId());
     }
 
 
+    public ArrayList<Integer> getEpicSubTask() {
+
+        return epicSubTaskList;
+    }
+
+    public void setEpicSubTask(ArrayList<Integer> epicSubTask) {
+
+        this.epicSubTaskList = epicSubTask;
+    }
 }
