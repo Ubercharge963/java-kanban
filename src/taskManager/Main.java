@@ -21,15 +21,12 @@ public class Main {
         SubTask subTask1 = new SubTask("Subtask 1", " Subtask 1 description", StatusOfTask.DONE);
         SubTask subTask2 = new SubTask("Subtask 2", "  Subtask 2 description", StatusOfTask.NEW);
         taskManager.addEpic(epic1);
-        taskManager.addSubTask(subTask1);
-        taskManager.addSubTask(subTask2);
-        epic1.addSubTaskToEpic(subTask1,epic1);
-        epic1.addSubTaskToEpic(subTask2,epic1);
+        taskManager.addSubTask(subTask1,3);
+        taskManager.addSubTask(subTask2,3);
         Epic epic2 = new Epic("Epic N2", "   Epic 2  ", StatusOfTask.DONE);
         taskManager.addEpic(epic2);
-        SubTask subTask11 = new SubTask("Subtask 11", "  Subtask 11 description", StatusOfTask.DONE);
-        taskManager.addSubTask(subTask11);
-        epic2.addSubTaskToEpic(subTask11,epic2);
+        SubTask subTask3 = new SubTask("Subtask 3", "  Subtask 3 description", StatusOfTask.DONE);
+        taskManager.addSubTask(subTask3,6);
         //Распечатайте списки эпиков, задач и подзадач
 
         System.out.println ("Список задач: \n" +taskManager.getListTask());
@@ -42,18 +39,20 @@ public class Main {
 
         subTask2.setStatus(StatusOfTask.DONE);
         System.out.println (subTask2);
-        subTask11.setStatus(StatusOfTask.IN_PROGRESS);
-        System.out.println (subTask11);
+        subTask3.setStatus(StatusOfTask.NEW);
+        System.out.println (subTask3);
         taskManager.updateEpic(epic1);
         taskManager.updateEpic(epic2);
         System.out.println (epic1);
         System.out.println (epic2);
 
         //попробуйте удалить одну из задач и один из эпиков.
+       taskManager.removeSubTaskById(4);
+       taskManager.removeTaskById(2);
+       System.out.println ("Список задач: \n" + taskManager.getListTask());
+       taskManager.removeEpicById(6);
+       System.out.println ("Список эпиков : \n" + taskManager.getListEpic());
 
-        taskManager.removeTaskById(2);
-        System.out.println ("Список задач: \n" + taskManager.getListTask());
-        taskManager.removeEpicById(6);
-        System.out.println ("Список эпиков : \n" + taskManager.getListEpic());
+
     }
 }

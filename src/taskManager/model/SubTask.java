@@ -7,9 +7,6 @@ public class SubTask extends Epic {
         super(title, description,status);
     }
 
-    public int getId() {
-        return super.id;
-    }
     public void setEpicId(Epic epic){
         epicId=epic.id;
     }
