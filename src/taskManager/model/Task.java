@@ -10,6 +10,11 @@ public class Task extends TaskManager {
     protected int id;
     protected StatusOfTask status;
 
+    public Task(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
 
     public int getId() {
         return id;
@@ -38,19 +43,20 @@ public class Task extends TaskManager {
     @Override
     public String toString() {
         return
-                " Название: " + title +" Описание: " + description +
-                 " Статус: " + status +"  id= " + id + '\n';
+                " Название: " + title + " Описание: " + description +
+                        " Статус: " + status + "  id= " + id + '\n';
     }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Task that = (Task) object;
-        return id == that.id && Objects.equals(getListTask(), that.getListTask()) ;
+        return id == that.id && Objects.equals(getListTask(), that.getListTask());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getListTask(),id);
+        return Objects.hash(getListTask(), id);
     }
 }

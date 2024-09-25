@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Epic extends Task {
 
     private ArrayList<Integer> epicSubTaskList; //создаем список подзадач в эпике
-    public Epic(String title, String description, StatusOfTask status ) {
-        super(title, description,status);
+
+    public Epic(String title, String description) {
+        super(title, description);
         epicSubTaskList = new ArrayList<>();
-        this.status = status;
+        status = StatusOfTask.NEW;
     }
+
     public void addSubTaskToEpic(int id) {
         epicSubTaskList.add(id);
 
